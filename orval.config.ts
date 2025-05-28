@@ -40,7 +40,6 @@ export default defineConfig({
       schemas: "schemas/",
       mode: "split",
       client: "fetch",
-      httpClient: "fetch",
       baseUrl: "http://localhost:3000", // APIサーバーのbaseUrl
       clean: true,
     },
