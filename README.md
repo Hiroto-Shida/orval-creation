@@ -21,7 +21,7 @@ npm i -D orval
 ## orval の設定ファイル `orval.config.ts` と OpenAPI のスキーマ `schemas.yaml` を用意
 
 ```diff
-/
+  /
   ├─ app/
   ├─ node_modules
 + ├─ orval.config.ts
@@ -180,7 +180,7 @@ npm run generate
 生成されるファイルの確認
 
 ```diff
-/
+  /
   ├─ app/
 + │  ├─ api/
 + │  │  └─ [[...route]]/
@@ -234,7 +234,7 @@ npm i hono zod @modelcontextprotocol/sdk @hono/zod-validator
 ### 簡易データベース
 
 ```diff
-/
+  /
   ├─ app/
   ...
 + ├─ database.ts
@@ -251,7 +251,7 @@ export const COLORFUL_MOAI_LIST = ["赤モアイ", "緑モアイ", "青モアイ
 
 `endpoints/colorful-moai/colorful-moai.handlers.ts`
 
-```diff:ts
+```diff
 ...
 + import { COLORFUL_MOAI_LIST } from "@/database";
 
@@ -281,7 +281,7 @@ export const COLORFUL_MOAI_LIST = ["赤モアイ", "緑モアイ", "青モアイ
 ### mcp.json を作成
 
 ```diff
-/
+  /
 + ├─ .cursor/
 + │  └─ mcp.json
   ├─ app/
@@ -332,7 +332,7 @@ npm run dev
 
 ### `app/page.tsx`に API 呼び出しを追加
 
-```diff:tsx
+```diff
 + import { getColorfulMoai } from "@/client/api";
 
 - export default function Home() {
