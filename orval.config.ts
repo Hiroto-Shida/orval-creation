@@ -6,12 +6,12 @@ export default defineConfig({
     output: {
       mode: "tags-split",
       client: "hono",
-      target: "app/api/",
+      target: "endpoints/",
       schemas: "schemas/",
       override: {
         hono: {
           compositeRoute: "app/api/[[...route]]/route.ts", // next.jsのAPI routeで使うためのPATH名を設定
-          validatorOutputPath: "app/api/validator.ts",
+          validatorOutputPath: "endpoints/validator.ts",
         },
       },
     },
