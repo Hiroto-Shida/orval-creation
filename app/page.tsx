@@ -5,3 +5,19 @@ export default function Home() {
     </main>
   );
 }
+
+/** 変更後コード */
+// import { getColorfulMoai } from "@/client/api";
+
+// export default async function Home() {
+
+//   const res = await getColorfulMoai({
+//     cache: "no-cache",
+//   });
+
+//   return (
+//     <main>
+//       <div>{JSON.stringify(res.data)}</div>
+//     </main>
+//   );
+// }
