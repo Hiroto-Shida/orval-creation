@@ -4,7 +4,7 @@ info:
   description: カラフルなモアイのリストを管理するAPI。
   version: 1.0.0
 paths:
-  /api/colorful-moai:
+  /colorful-moai:
     get:
       summary: カラフルモアイ一覧を取得
       operationId: getColorfulMoai

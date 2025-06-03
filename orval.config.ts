@@ -2,21 +2,21 @@ import { defineConfig } from "orval";
 
 export default defineConfig({
   api: {
-    input: "schemas.yaml",
+    input: "schemas.yaml", // 使用するOpenAPIスキーマ
     output: {
-      mode: "tags-split",
-      client: "hono",
       target: "endpoints/",
       schemas: "schemas/",
+      client: "hono", // 生成するコードの種類
+      mode: "tags-split",
       override: {
         hono: {
-          compositeRoute: "app/api/[[...route]]/route.ts", // next.jsのAPI routeで使うためのPATH名を設定
+          compositeRoute: "app/api/[[...route]]/route.ts", // Next.jsのRoute Handlersで使うためのPATH名
           validatorOutputPath: "endpoints/validator.ts",
         },
       },
     },
     hooks: {
-      afterAllFilesWrite: "npx @biomejs/biome format --write",
+      afterAllFilesWrite: "npx prettier . --write",
     },
   },
   mcp: {
@@ -24,13 +24,13 @@ export default defineConfig({
     output: {
       target: "mcp/handlers.ts",
       schemas: "schemas/",
+      client: "mcp", // 生成するコードの種類
       mode: "single",
-      client: "mcp",
-      baseUrl: "http://localhost:3000", // APIサーバーのbaseUrl
+      baseUrl: "http://localhost:3000/api", // APIサーバーのbaseUrl
       clean: true,
     },
     hooks: {
-      afterAllFilesWrite: "npx @biomejs/biome format --write",
+      afterAllFilesWrite: "npx prettier . --write",
     },
   },
   client: {
@@ -38,13 +38,13 @@ export default defineConfig({
     output: {
       target: "client/",
       schemas: "schemas/",
+      client: "fetch", // 生成するコードの種類
       mode: "split",
-      client: "fetch",
-      baseUrl: "http://localhost:3000", // APIサーバーのbaseUrl
+      baseUrl: "http://localhost:3000/api", // APIサーバーのbaseUrl
       clean: true,
     },
     hooks: {
-      afterAllFilesWrite: "npx @biomejs/biome format --write",
+      afterAllFilesWrite: "npx prettier . --write",
     },
   },
 });
